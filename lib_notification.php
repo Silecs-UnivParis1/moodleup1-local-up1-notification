@@ -135,6 +135,7 @@ function notification_send_email($user, $subject, $message) {
         return false;
     }
     $supportuser = core_user::get_support_user();
+    $user->mailformat=1;
     return email_to_user($user, $supportuser, $subject, $message);
 }
 ?>
