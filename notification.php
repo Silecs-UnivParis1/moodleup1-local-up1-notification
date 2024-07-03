@@ -14,6 +14,8 @@ $courseid = optional_param('courseid', false, PARAM_INT);
 $id = required_param('id', PARAM_INT);
 
 $infolog = array();
+if ( !user_has_role_assignment($USER->id, 3))
+    redirect($CFG->wwwroot . '/mod/feedback/view.php?id='.$id);
 
 // faire pleins de vérif
 

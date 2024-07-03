@@ -7,7 +7,7 @@
  */
 
 function local_up1_notification_extend_navigation() {
-    global $OUTPUT, $PAGE, $DB;
+    global $OUTPUT, $PAGE, $DB,$USER;
     if ($PAGE->theme->name == 'boost') {
         $pages = ['/mod/feedback/edit.php', '/mod/feedback/view.php', 
             '/mod/feedback/analysis.php', '/mod/feedback/show_entries.php',
@@ -42,7 +42,7 @@ EOJS
         }
     } else if ($PAGE->theme->name == 'adaptable') {
         $pages = ['/mod/feedback/view.php'];
-        if ($PAGE->has_set_url() && in_array($PAGE->url->get_path(), $pages)) {
+        if ($PAGE->has_set_url() && in_array($PAGE->url->get_path(), $pages) && user_has_role_assignment($USER->id, 3)) {
              if ($DB->get_records('config_plugins', array('plugin' => 'local_up1_notification'))) {
                 $id = $PAGE->url->get_param('id');
                 $lien = new moodle_url('/local/up1_notification/notification.php', ['id' => $id]);
