@@ -93,8 +93,6 @@ $PAGE->requires->js_init_code(file_get_contents(__DIR__ . '/js/include-for-notif
 
 echo $OUTPUT->header();
 
-require('../../mod/feedback/tabs.php');
-
 echo $OUTPUT->box_start('feedback_info');
 echo '<span class="feedback_info">';
 echo get_string('completed_feedbacks', 'feedback').': ';
